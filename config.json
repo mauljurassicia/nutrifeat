@@ -6,7 +6,8 @@
         "description": "App to track nutrition",
         "environment": "dev",
         "host": "localhost",
-        "port": 3000
+        "port": 3000,
+		"disable_database": true
     },
     "database": {
         "host": "localhost",

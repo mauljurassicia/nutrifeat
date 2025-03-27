@@ -2,22 +2,38 @@ package http
 
 import (
 	"net/http"
-
+	"github.com/a-h/templ"
 )
 
 
 
 
 type HttpApp interface {
-	Get(path string, handle HandlerFuncWithContext) error
-	Post(path string, handle HandlerFuncWithContext) error
-	Options(path string, handle HandlerFuncWithContext) error
-	Head(path string, handle HandlerFuncWithContext) error
-	Patch(path string, handle HandlerFuncWithContext) error
-	Delete(path string, handle HandlerFuncWithContext) error
-	Put(path string, handle HandlerFuncWithContext) error
+	Get(path string, handle HandlerFuncWithContext, middleware ...MiddlewareFuncWithContext) error
+	Post(path string, handle HandlerFuncWithContext, middleware ...MiddlewareFuncWithContext) error
+	Options(path string, handle HandlerFuncWithContext, middleware ...MiddlewareFuncWithContext) error
+	Head(path string, handle HandlerFuncWithContext, middleware ...MiddlewareFuncWithContext) error
+	Patch(path string, handle HandlerFuncWithContext, middleware ...MiddlewareFuncWithContext) error
+	Delete(path string, handle HandlerFuncWithContext, middleware ...MiddlewareFuncWithContext) error
+	Put(path string, handle HandlerFuncWithContext, middleware ...MiddlewareFuncWithContext) error
 	Serve(addr string) error
+	Assets(path string)
+	Group(prefix string, middleware ...MiddlewareFuncWithContext) HttpGroup
+	Use(middleware ...MiddlewareFuncWithContext)
 }
+
+type HttpGroup interface {
+	Get(path string, handle HandlerFuncWithContext, middleware ...MiddlewareFuncWithContext) error
+	Post(path string, handle HandlerFuncWithContext, middleware ...MiddlewareFuncWithContext) error
+	Options(path string, handle HandlerFuncWithContext, middleware ...MiddlewareFuncWithContext) error
+	Head(path string, handle HandlerFuncWithContext, middleware ...MiddlewareFuncWithContext) error
+	Patch(path string, handle HandlerFuncWithContext, middleware ...MiddlewareFuncWithContext) error
+	Delete(path string, handle HandlerFuncWithContext, middleware ...MiddlewareFuncWithContext) error
+	Put(path string, handle HandlerFuncWithContext, middleware ...MiddlewareFuncWithContext) error
+}
+
+
+
 
 type HttpContext interface {
 	Accepts(offers ...string) string
@@ -29,16 +45,14 @@ type HttpContext interface {
 	Protocol() string
 	JSON(body interface{}, ctype ...string) error
 	BodyParser(body interface{}) error
-	Render(template string, data interface{}, layout ...string) error
+	Render(view templ.Component ) error
+
 }
+
+
+type MiddlewareFuncWithContext func(HandlerFuncWithContext) HandlerFuncWithContext
+
 
 type HandlerFuncWithContext func(c HttpContext) error
 
 type NewErrorHandler func (err error) http.HandlerFunc
-
-
-
-
-
-
-

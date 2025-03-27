@@ -12,5 +12,7 @@ type RouteConfig struct {
 
 func RegisterRoutes(c *RouteConfig) {
 	c.App.Get("/", c.HomeController.GetHome)
+	c.App.Get("/user", c.HomeController.GetUserName)
+	c.App.Get("/params/{username}/{password}", c.HomeController.GetAllParams)
 }
 

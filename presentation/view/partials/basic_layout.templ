@@ -1,0 +1,27 @@
+package partials
+
+import (
+	"github.com/axzilla/templui/helpers"
+	"github/mauljurassicia/nutrifeat/presentation/view/partials/navigation"
+)
+
+templ BasicLayout() {
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<title>Nutrifeat</title>
+			<link rel="stylesheet" href="public/css/output.css"/>
+			// Option A: Include Alpine.js and all component scripts (recommended)
+			@helpers.ComponentScripts()
+			<script defer src="public/js/app.js"></script>
+		</head>
+		<body class="bg-background text-foreground w-full">
+			@navigation.HomeNav()
+			<main class="w-full max-w-2xl mx-auto py-8">
+				{ children... }
+			</main>
+		</body>
+	</html>
+}

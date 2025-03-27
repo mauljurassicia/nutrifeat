@@ -18,6 +18,4 @@ func Bootstrap(config BootstrapConfig) {
 	routeConfig := route.RouteConfig{App: config.Server, HomeController: homeController}
 	route.RegisterRoutes(&routeConfig)
 
-
-
 }

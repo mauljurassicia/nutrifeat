@@ -1,0 +1,93 @@
+@import 'tailwindcss';
+
+@source "/Users/maula/go/pkg/mod/github.com/axzilla/templui@*/**/*.{go,templ}";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(---accent-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+
+  --container-2xl: 1400px;
+}
+
+
+:root  {
+  --background: hsl(126, 90%, 95%);
+  --foreground: hsl(126, 5%, 10%);
+  --card: hsl(126, 50%, 90%);
+  --card-foreground: hsl(126, 5%, 11%);
+  --popover: hsl(126, 90%, 95%);
+  --popover-foreground: hsl(126, 95%, 10%);
+  --primary: hsl(126, 44%, 55%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(126, 30%, 70%);
+  --secondary-foreground: hsl(0, 0%, 0%);
+  --muted: hsl(88, 30%, 85%);
+  --muted-foreground: hsl(126, 5%, 35%);
+  --accent: hsl(88, 30%, 80%);
+  --accent-foreground: hsl(126, 5%, 11%);
+  --destructive: hsl(0, 90%, 30%);
+  --destructive-foreground: hsl(126, 5%, 90%);
+  --border: hsl(126, 30%, 50%);
+  --input: hsl(126, 30%, 18%);
+  --ring: hsl(126, 44%, 55%);
+  --radius: 0.75rem;
+}
+.dark  {
+  --background: hsl(126, 50%, 10%);
+  --foreground: hsl(126, 5%, 90%);
+  --card: hsl(126, 50%, 10%);
+  --card-foreground: hsl(126, 5%, 90%);
+  --popover: hsl(126, 50%, 5%);
+  --popover-foreground: hsl(126, 5%, 90%);
+  --primary: hsl(126, 44%, 55%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(126, 30%, 11%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --muted: hsl(88, 30%, 15%);
+  --muted-foreground: hsl(126, 5%, 60%);
+  --accent: hsl(88, 30%, 15%);
+  --accent-foreground: hsl(126, 5%, 90%);
+  --destructive: hsl(0, 90%, 30%);
+  --destructive-foreground: hsl(126, 5%, 90%);
+  --border: hsl(126, 30%, 18%);
+  --input: hsl(126, 30%, 18%);
+  --ring: hsl(126, 44%, 55%);
+  --radius: 0.75rem;
+}
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+}
