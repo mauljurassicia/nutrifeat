@@ -1,0 +1,12 @@
+package layout
+
+import "github/mauljurassicia/nutrifeat/presentation/view/partials/navigation"
+
+templ HomeLayout() {
+	@BasicLayout() {
+		@navigation.HomeNav()
+		<main class="w-full max-w-2xl mx-auto py-8">
+			{ children... }
+		</main>
+	}
+}

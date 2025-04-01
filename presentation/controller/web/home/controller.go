@@ -2,7 +2,7 @@ package home
 
 import (
 	"github/mauljurassicia/nutrifeat/infrastructure/http"
-	"github/mauljurassicia/nutrifeat/presentation/view/pages"
+	pages "github/mauljurassicia/nutrifeat/presentation/view/pages/home"
 )
 
 type HomeController struct {

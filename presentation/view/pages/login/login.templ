@@ -1,0 +1,181 @@
+package pages
+
+import "github/mauljurassicia/nutrifeat/presentation/view/partials/layout"
+
+// Import the necessary React components as standard HTML/CSS.  Since this is Templ,
+// we're not directly importing React components, but recreating their visual
+// representation and basic functionality with HTML and Templ.
+//
+// In a real Templ application, you'd likely have a separate system for handling
+// interactive elements (like the form submission and toast notifications).  For
+// this example, we'll provide basic HTML form handling and placeholder toast
+// functionality.
+//
+// Note:  We're assuming the existence of CSS files (output.css) and a JS file (app.js)
+// for styling and basic interactivity.  You'll need to create these files separately
+// to match the original React app's appearance and behavior.
+//
+//  Also, since Templ doesn't have a direct equivalent to React's state management,
+//  we'll handle form input with standard HTML form elements.
+//
+//  For the toast notifications, we'll use a placeholder div.  In a real app,
+//  you might use a library like HTMX or create your own JavaScript solution.
+templ Login() {
+	@layout.BasicLayout() {
+		<div class="flex min-h-screen w-full">
+			// Left side - Login form
+			<div class="flex w-full lg:w-1/2 flex-col items-center justify-center px-6 py-12 lg:px-8">
+				<div class="sm:mx-auto sm:w-full sm:max-w-sm">
+					<div class="flex justify-center mb-6">
+						<div class="flex items-center gap-2">
+							<div class="relative w-8 h-8 rounded-full bg-neutral-800">
+								<div class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-teal-500"></div>
+							</div>
+							<h2 class="text-2xl font-semibold">Qafeleh</h2>
+						</div>
+					</div>
+					<h2 class="text-center text-2xl font-bold leading-9 tracking-tight">
+						Welcome back
+					</h2>
+				</div>
+				<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-md">
+					//  Handle form submission with standard HTML.  We'll use a server-side
+					//  handler (e.g., in Go) to process the login.
+					<form class="space-y-4" method="post" action="/login">
+						<div>
+							<div class="relative">
+								//  Use a standard input field.  The 'name' attributes are
+								//  important for server-side processing.
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 h-5 w-5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22 6 12 13 2 6"></polyline></svg>
+								<input
+									id="email"
+									name="email"
+									type="email"
+									placeholder="example@gmail.com"
+									autocomplete="email"
+									required
+									class="pl-10 w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+								/>
+							</div>
+						</div>
+						<div>
+							<div class="relative">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 h-5 w-5"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+								<input
+									id="password"
+									name="password"
+									type="password"
+									placeholder="Password"
+									autocomplete="current-password"
+									required
+									class="pl-10 w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+								/>
+							</div>
+						</div>
+						<div class="flex items-center justify-between">
+							<div class="flex items-center space-x-2">
+								//  Use a standard checkbox.  The 'name' attribute is important.
+								<input
+									id="remember"
+									name="remember"
+									type="checkbox"
+									class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+								/>
+								<label
+									for="remember"
+									class="text-sm font-medium leading-none text-gray-900"
+								>
+									Remember me
+								</label>
+							</div>
+							<div class="text-sm">
+								<a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
+									Forgot Password?
+								</a>
+							</div>
+						</div>
+						<div>
+							<button
+								type="submit"
+								class="w-full rounded-md bg-teal-800 hover:bg-teal-700 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm  focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+							>
+								Sign in
+							</button>
+						</div>
+					</form>
+					<div class="mt-6 space-y-4">
+						//  These buttons will need JavaScript to handle the "toast"
+						//  functionality.  We'll add basic placeholders here.
+						<button
+							class="w-full flex items-center justify-center gap-2 rounded-md border border-gray-300 bg-white px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm font-medium text-gray-700 hover:bg-gray-50"
+							onclick="showFacebookToast()"
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook h-5 w-5 text-blue-600"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+							<span>Sign in with Facebook</span>
+						</button>
+						<button
+							class="w-full flex items-center justify-center gap-2 rounded-md border border-gray-300 bg-white px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm font-medium text-gray-700 hover:bg-gray-50"
+							onclick="showGoogleToast()"
+						>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe h-5 w-5 text-red-500"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M12 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path></svg>
+							<span>Sign in with Google</span>
+						</button>
+					</div>
+					<p class="mt-10 text-center text-sm text-gray-500">
+						Don't have an account?
+						<a href="#" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+							Sign up
+						</a>
+					</p>
+				</div>
+			</div>
+			// Right side - Illustration
+			<div class="hidden lg:flex lg:w-1/2 bg-teal-900 flex-col items-center justify-center relative p-8">
+				<img
+					src="/lovable-uploads/269a6091-5599-40ce-91d4-595e46d8badd.png"
+					alt="Security illustration"
+					class="w-3/4 max-w-md mb-8 z-10"
+				/>
+				<div class="text-center max-w-lg text-white z-10">
+					<p class="text-lg">
+						Secure your information with our state-of-the-art authentication system.
+					</p>
+				</div>
+				// Background decorative elements
+				<div class="absolute inset-0 overflow-hidden">
+					<div class="absolute top-20 left-20 w-32 h-32 bg-teal-800/20 rounded-full"></div>
+					<div class="absolute bottom-20 right-20 w-48 h-48 bg-teal-800/20 rounded-full"></div>
+				</div>
+			</div>
+			// Placeholder for toast notifications.  In a real application, you'd
+			// likely have a more sophisticated implementation.
+			<div id="toast-container" class="fixed bottom-4 right-4 z-50"></div>
+			// JavaScript to handle the placeholder toast notifications.
+			<script>
+        function showToast(title, description) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `bg-white border-l-4 border-teal-500 text-gray-700 p-4 rounded shadow-md mb-2`;
+            toast.innerHTML = `
+                <strong class="font-bold">${title}</strong>
+                <span class="block sm:inline">${description}</span>
+            `;
+            container.appendChild(toast);
+
+            // Remove the toast after a few seconds
+            setTimeout(() => {
+                toast.remove();
+            }, 3000); // 3 seconds
+        }
+
+        function showFacebookToast() {
+            showToast("Facebook Sign In", "Facebook authentication initiated");
+        }
+
+        function showGoogleToast() {
+            showToast("Google Sign In", "Google authentication initiated");
+        }
+        </script>
+		</div>
+	}
+}
