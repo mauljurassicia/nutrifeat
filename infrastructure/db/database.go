@@ -6,6 +6,7 @@ import (
 )
 
 type DatabaseConfig struct {
+	Type     string
 	Host     string
 	Port     int
 	User     string

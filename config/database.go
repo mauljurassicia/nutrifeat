@@ -9,6 +9,7 @@ import (
 func NewDatabase(config *viper.Viper) db.DB {
 
 	databaseConfig := db.DatabaseConfig{
+		Type:     config.GetString("database.type"),
 		Host:     config.GetString("database.host"),
 		Port:     config.GetInt("database.port"),
 		User:     config.GetString("database.user"),

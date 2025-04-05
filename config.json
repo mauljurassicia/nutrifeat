@@ -10,10 +10,11 @@
 		"disable_database": true
     },
     "database": {
+        "type": "sqlite",
         "host": "localhost",
         "port": 5432,
         "user": "myuser",
         "password": "mypassword",
-        "database": "nutrifeat"
+        "database": "database/sqlite/app.db"
     }
 }

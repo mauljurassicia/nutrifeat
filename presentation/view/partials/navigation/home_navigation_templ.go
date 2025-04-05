@@ -8,7 +8,10 @@ package navigation
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-import "github.com/axzilla/templui/components"
+import (
+	"github.com/axzilla/templui/components"
+	i "github.com/callsamu/templicons"
+)
 
 func HomeNav() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
@@ -31,7 +34,15 @@ func HomeNav() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<nav class=\"flex justify-center items-center h-20  text-muted-foreground\"><div class=\"container px-12 flex justify-between items-center \"><div><h1 class=\" text-3xl font-bold text-accent-foreground\">Nutrifeat</h1></div><div class=\"flex items-center space-x-4\"><a href=\"/\" class=\"text-lg font-semibold hover:text-foreground\">Halaman Utama</a> <a href=\"/about\" class=\"text-lg font-semibold hover:text-foreground\">Tentang Kami</a> <a href=\"/service\" class=\"text-lg font-semibold hover:text-foreground\">Layanan</a><!-- Add more links here --></div><div class=\"flex items-center gap-1\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<nav class=\"flex justify-center items-center h-20  text-muted-foreground\"><div class=\"container px-12 flex justify-between items-center \"><div><h1 class=\" text-3xl font-bold text-accent-foreground flex gap-2\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = i.Icon("ion:nutrition", nil).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "Nutrifeat</h1></div><div class=\"flex items-center space-x-4\"><a href=\"/\" class=\"text-lg font-semibold hover:text-foreground\">Halaman Utama</a> <a href=\"/about\" class=\"text-lg font-semibold hover:text-foreground\">Tentang Kami</a> <a href=\"/service\" class=\"text-lg font-semibold hover:text-foreground\">Layanan</a><!-- Add more links here --></div><div class=\"flex items-center gap-1\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -47,7 +58,7 @@ func HomeNav() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "Masuk")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "Masuk")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -72,7 +83,7 @@ func HomeNav() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "Daftar")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "Daftar")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -86,7 +97,7 @@ func HomeNav() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div></div></nav>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</div></div></nav>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
