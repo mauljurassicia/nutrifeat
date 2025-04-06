@@ -18,5 +18,7 @@ func RegisterRoutes(c *RouteConfig) {
 	c.App.Get("/params/{username}/{password}", c.HomeController.GetAllParams)
 	c.App.Get("/login", c.AuthController.GetLogin)
 	c.App.Get("/register", c.AuthController.GetRegister)
+	c.App.Post("/login", c.AuthController.PostLogin)
+	c.App.Post("/register", c.AuthController.PostRegister)
 }
 

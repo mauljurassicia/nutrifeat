@@ -6,6 +6,27 @@ import (
 )
 
 
+const (
+	// MIME types
+	JSON = "application/json"
+	HTML = "text/html"
+	TEXT = "text/plain"
+	XML     = "application/xml"
+	CSS     = "text/css"
+	JAVASCRIPT = "application/javascript"
+
+	// Status codes
+	OK           = 200
+	BadRequest   = 400
+	Unauthorized = 401
+	NotFound     = 404
+	ServerError  = 500
+	Forbidden       = 403
+	MethodNotAllowed = 405
+
+)
+
+
 
 
 type HttpApp interface {
@@ -46,7 +67,9 @@ type HttpContext interface {
 	JSON(body interface{}, ctype ...string) error
 	BodyParser(body interface{}) error
 	Render(view templ.Component ) error
-
+	Status(status int) HttpContext
+	Methode() string
+	Path() string
 }
 
 

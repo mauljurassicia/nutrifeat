@@ -111,6 +111,11 @@ func (c *StdContext) SendStatus(status int) error {
 	return nil
 }
 
+func (c *StdContext) Status(status int) HttpContext {
+	c.responseWriter.WriteHeader(status)
+	return c
+}
+
 func (c *StdContext) Params(key string, defaultValue ...string) string {
 	if val, exists := c.params[key]; exists {
 		return val
@@ -154,6 +159,14 @@ func (c *StdContext) Render(view templ.Component) error {
 	// Rendering logic should be implemented here, depending on the template engine used
 
 	return view.Render(*c.Context, c.responseWriter)
+}
+
+func (c *StdContext) Methode() string {
+	return c.request.Method
+}
+
+func (c *StdContext) Path() string {
+	return c.request.URL.Path
 }
 
 func (app *App) Assets(path string) {
