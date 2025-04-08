@@ -1,0 +1,25 @@
+<aside class=\"w-64 min-h-screen border-r border-r-secondary px-4 py-6\" aria-label=\"Sidebar\"><nav class=\"space-y-6\" hx-boost=\"true\" hx-target=\"body\">
+<a href=\"/dashboard\" preload=\"mouseover\" class=\"
+\">
+Dashboard </a> 
+<a href=\"/users\" preload=\"mouseover\" class=\"
+\">
+Patients</a> 
+<a href=\"/schedules\" preload=\"mouseover\" class=\"
+\">
+Schedules</a> 
+<a href=\"/rooms\" preload=\"mouseover\" class=\"
+\">
+Rooms</a> 
+<a href=\"/meal-plan\" preload=\"mouseover\" class=\"
+\">
+Meal Plans</a> 
+<a href=\"/foods\" preload=\"mouseover\" class=\"
+\">
+Foods</a> 
+<a href=\"/recipes\" preload=\"mouseover\" class=\"
+\">
+Recipes</a> 
+<a href=\"/nutrient-requirements\" preload=\"mouseover\" class=\"
+\">
+Nutrient Requirements</a></nav></aside>

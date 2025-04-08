@@ -84,7 +84,7 @@ templ Register() {
 			</div>
 			<div class="text-center text-sm text-gray-500">
 				Already have an account?
-				<a href="/login" class="font-semibold text-primary hover:text-primary/80">
+				<a href="/login" class="font-semibold text-primary hover:text-primary/80" hx-target="#auth-template" hx-push-url="true" hx-swap="outerHTML" preload="mouseover">
 					Log in
 				</a>
 			</div>

@@ -1,0 +1,54 @@
+package components
+
+import "github.com/axzilla/templui/icons"
+
+func getClass(p string, path string) string{
+	if p == path {
+		return "sidebar-item active"
+	}
+
+	return "sidebar-item"
+}
+
+templ Sidebar() {
+	{{ path := ctx.Value("path").(string) }}
+
+	// Define a helper function to determine active class
+
+	<aside class="w-64 min-h-screen border-r border-r-secondary px-4 py-6" aria-label="Sidebar">
+		<nav class="space-y-6" hx-boost="true" hx-target="body">
+			<a href="/dashboard" preload="mouseover" class={getClass("/dashboard", path)}>
+				@icons.LayoutDashboard()
+				Dashboard 
+			</a>
+			<a href="/users" preload="mouseover" class={getClass("/users", path)}>
+				@icons.User()
+				Patients
+			</a>
+			<a href="/schedules" preload="mouseover" class={getClass("/schedules", path)}>
+				@icons.Calendar()
+				Schedules
+			</a>
+			<a href="/rooms" preload="mouseover" class={getClass("/rooms", path)}>
+				@icons.BedSingle()
+				Rooms
+			</a>
+			<a href="/meal-plan" preload="mouseover" class={getClass("/meal-plan", path)}>
+				@icons.NotepadText()
+				Meal Plans
+			</a>
+			<a href="/foods" preload="mouseover" class={getClass("/foods", path)}>
+				@icons.Beef()
+				Foods
+			</a>
+			<a href="/recipes" preload="mouseover" class={getClass("/recipes", path)}>
+				@icons.CookingPot()
+				Recipes
+			</a>
+			<a href="/nutrient-requirements" preload="mouseover" class={getClass("/nutrient-requirements", path)}>
+				@icons.Scale()
+				Nutrient Requirements
+			</a>
+		</nav>
+	</aside>
+}

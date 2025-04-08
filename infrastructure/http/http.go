@@ -70,6 +70,7 @@ type HttpContext interface {
 	Status(status int) HttpContext
 	Methode() string
 	Path() string
+	Cookies(key string, defaultValue ...string) string
 }
 
 

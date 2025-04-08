@@ -65,8 +65,11 @@ func HomeNav() templ.Component {
 			return nil
 		})
 		templ_7745c5c3_Err = components.Button(components.ButtonProps{
-			Href:  "/login",
 			Class: "font-bold",
+			HxGet: "/login",
+			Attributes: map[string]any{"hx-push-url": "true",
+				"preload": "mouseover"},
+			HxTarget: "body",
 		}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -90,7 +93,10 @@ func HomeNav() templ.Component {
 			return nil
 		})
 		templ_7745c5c3_Err = components.Button(components.ButtonProps{
-			Href:    "/register",
+			HxGet:    "/register",
+			HxTarget: "body",
+			Attributes: map[string]any{"hx-push-url": "true",
+				"preload": "mouseover"},
 			Class:   "border-primary border-2 text-primary font-bold",
 			Variant: components.ButtonVariantOutline,
 		}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var3), templ_7745c5c3_Buffer)

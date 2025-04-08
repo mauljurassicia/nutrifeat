@@ -1,0 +1,17 @@
+package layout
+
+import "github/mauljurassicia/nutrifeat/presentation/view/components"
+
+templ DashboardLayout() {
+	@BasicLayout() {
+		<div class="w-full h-auto min-h-screen">
+			@components.Topbar()
+			<div class="w-full flex">
+				@components.Sidebar()
+				<main class="py-4 px-4">
+					{ children... }
+				</main>
+			</div>
+		</div>
+	}
+}

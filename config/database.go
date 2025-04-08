@@ -17,7 +17,7 @@ func NewDatabase(config *viper.Viper) db.DB {
 		Database: config.GetString("database.database"),
 	}
 
-	db := &db.SqlGo{}
+	db := &db.SqliteGo{}
 	db.Open(databaseConfig)
 
 	return db

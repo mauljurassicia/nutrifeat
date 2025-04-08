@@ -20,7 +20,7 @@ type App struct {
 
 func NewStd() *App {
 	app := &App{
-		router:       mux.NewRouter(),
+		router: mux.NewRouter(),
 		errorHandler: func(err error) http.HandlerFunc {
 			return func(w http.ResponseWriter, r *http.Request) {
 				w.WriteHeader(http.StatusInternalServerError)
@@ -81,7 +81,7 @@ func (g *group) Head(path string, handle HandlerFuncWithContext, middleware ...M
 }
 
 type StdContext struct {
-	Context        *context.Context // Embed the context.Context
+	Context        context.Context // Embed the context.Context
 	responseWriter http.ResponseWriter
 	request        *http.Request
 	params         map[string]string // Store path parameters
@@ -151,6 +151,17 @@ func (c *StdContext) JSON(body interface{}, ctype ...string) error {
 	return json.NewEncoder(c.responseWriter).Encode(body)
 }
 
+func (c *StdContext) Cookies(key string, defaultValue ...string) string {
+	cookie, err := c.request.Cookie(key)
+	if err != nil {
+		if len(defaultValue) > 0 {
+			return defaultValue[0]
+		}
+		return ""
+	}
+	return cookie.Value
+}
+
 func (c *StdContext) BodyParser(body interface{}) error {
 	return json.NewDecoder(c.request.Body).Decode(body)
 }
@@ -158,7 +169,10 @@ func (c *StdContext) BodyParser(body interface{}) error {
 func (c *StdContext) Render(view templ.Component) error {
 	// Rendering logic should be implemented here, depending on the template engine used
 
-	return view.Render(*c.Context, c.responseWriter)
+	ctx := context.WithValue(c.Context, "hx-request", c.request.Header.Get("HX-Request") == "true")
+	ctx = context.WithValue(ctx, "path", c.request.URL.Path)
+
+	return view.Render(ctx, c.responseWriter)
 }
 
 func (c *StdContext) Methode() string {
@@ -191,7 +205,7 @@ func (app *App) stdHandler(h HandlerFuncWithContext) http.HandlerFunc {
 
 		// Create a new StdContext.
 		c := &StdContext{
-			Context:        &ctx,
+			Context:        ctx,
 			responseWriter: w,
 			request:        r,
 			params:         make(map[string]string), // Initialize params
@@ -238,7 +252,7 @@ func (app *App) registerRoute(method string, path string, handle HandlerFuncWith
 		// Create a new StdContext.
 		ctx := r.Context()
 		c := &StdContext{
-			Context:        &ctx,
+			Context:        ctx,
 			responseWriter: w,
 			request:        r,
 			params:         params, // Initialize params
@@ -282,4 +296,3 @@ func (app *App) Delete(path string, handle HandlerFuncWithContext, middleware ..
 func (app *App) Put(path string, handle HandlerFuncWithContext, middleware ...MiddlewareFuncWithContext) error {
 	return app.registerRoute(http.MethodPut, path, handle, middleware...)
 }
-

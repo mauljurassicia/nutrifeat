@@ -22,13 +22,19 @@ templ HomeNav() {
 			</div>
 			<div class="flex items-center gap-1">
 				@components.Button(components.ButtonProps{
-					Href:  "/login",
 					Class: "font-bold",
+					HxGet: "/login",
+					Attributes: map[string]any{"hx-push-url": "true",
+						"preload": "mouseover"},
+					HxTarget: "body",
 				}) {
 					Masuk
 				}
 				@components.Button(components.ButtonProps{
-					Href:    "/register",
+					HxGet:    "/register",
+					HxTarget: "body",
+					Attributes: map[string]any{"hx-push-url": "true",
+						"preload": "mouseover"},
 					Class:   "border-primary border-2 text-primary font-bold",
 					Variant: components.ButtonVariantOutline,
 				}) {

@@ -1,0 +1,4 @@
+<div class=\"w-full h-auto min-h-screen\">
+<div class=\"w-full flex\">
+<main class=\"py-4 px-4\">
+</main></div></div>

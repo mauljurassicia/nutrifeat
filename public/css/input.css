@@ -79,10 +79,9 @@
 }
 
 
+
+
 @layer base {
-  * {
-    @apply border-border;
-  }
 
   body {
     @apply bg-background text-foreground;
@@ -90,4 +89,12 @@
       "rlig" 1,
       "calt" 1;
   }
+}
+
+.sidebar-item {
+  @apply flex items-center gap-3 p-3 rounded-md hover:bg-accent cursor-pointer text-accent-foreground;
+}
+
+.sidebar-item.active {
+  @apply bg-accent text-accent-foreground;
 }

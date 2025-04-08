@@ -21,6 +21,8 @@ import "github/mauljurassicia/nutrifeat/presentation/view/partials/auth"
 //  For the toast notifications, we'll use a placeholder div.  In a real app,
 //  you might use a library like HTMX or create your own JavaScript solution.
 templ Login() {
+
+
 	@auth.AuthLayout(auth.Login) {
 		<form class="space-y-4" method="post" action="/login">
 			<div>
