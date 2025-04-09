@@ -41,6 +41,8 @@ type HttpApp interface {
 	Assets(path string)
 	Group(prefix string, middleware ...MiddlewareFuncWithContext) HttpGroup
 	Use(middleware ...MiddlewareFuncWithContext)
+	SetNotFoundHandler(handler HandlerFuncWithContext)
+	SetNotAllowedHandler(handler HandlerFuncWithContext)
 }
 
 type HttpGroup interface {
@@ -71,6 +73,7 @@ type HttpContext interface {
 	Methode() string
 	Path() string
 	Cookies(key string, defaultValue ...string) string
+	Header(key string, defaultValue ...string) string
 }
 
 

@@ -6,4 +6,5 @@ const (
 	ErrUserAlreadyExists = "user already exists"
 	ErrParsing = "Parsing Error"
 	ErrValidation = "Validation Error"
+	ErrNotFound = "Not Found"
 )

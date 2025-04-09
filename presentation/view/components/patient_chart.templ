@@ -1,0 +1,25 @@
+package components
+
+import "github.com/axzilla/templui/components"
+
+templ PatientChart() {
+	<div class="h-72">
+		@components.Chart(components.ChartProps{
+			Variant:     components.ChartVariantLine,
+			ShowYGrid:   true,
+			ShowYLabels: true,
+			ShowXLabels: true,
+            Class: "h-full w-full",
+			Data: components.ChartData{
+				Labels: []string{"Jan", "Feb", "March", "April", "May", "June"},
+				Datasets: []components.ChartDataset{
+					{
+						Data:        []float64{12, 3, 9, 3, 12, 7},
+						Tension:     0.3,
+						BorderColor: "hsl(126, 5%, 11%)",
+					},
+				},
+			},
+		})
+	</div>
+}

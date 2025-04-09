@@ -98,3 +98,13 @@
 .sidebar-item.active {
   @apply bg-accent text-accent-foreground;
 }
+
+/* Hide scrollbars for all elements in all modern browsers */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}

@@ -1,0 +1,23 @@
+package components
+
+templ StatCard(icon templ.Component, title string, value string, unit *string, bgColor *string) {
+	{{style := ""
+if bgColor != nil {
+	style = "background-color: " + *bgColor + ";"
+}
+	}}
+	<div class="bg-secondary text-secondary-foreground rounded-lg p-6 flex items-center gap-4 min-w-20" style={ style }>
+		<div>
+			@icon
+		</div>
+		<div>
+			<h3 class="font-semibold text-muted-foreground text-xs">{ title }</h3>
+			<p class="text-2xl font-semibold">
+				{ value }
+				if unit != nil {
+					<span class="text-muted-foreground">{ *unit }</span>
+				}
+			</p>
+		</div>
+	</div>
+}

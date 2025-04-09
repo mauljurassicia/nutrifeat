@@ -183,6 +183,14 @@ func (c *StdContext) Path() string {
 	return c.request.URL.Path
 }
 
+func (c *StdContext) Header(key string, defaultValue ...string) string {
+	value := c.request.Header.Get(key)
+	if value == "" && len(defaultValue) > 0 {
+		return defaultValue[0]
+	}
+	return value
+}
+
 func (app *App) Assets(path string) {
 	if !strings.HasPrefix(path, "/") {
 		path = "/" + path
@@ -295,4 +303,16 @@ func (app *App) Delete(path string, handle HandlerFuncWithContext, middleware ..
 
 func (app *App) Put(path string, handle HandlerFuncWithContext, middleware ...MiddlewareFuncWithContext) error {
 	return app.registerRoute(http.MethodPut, path, handle, middleware...)
+}
+
+func (app *App) SetNotFoundHandler(handler HandlerFuncWithContext) {
+	app.router.NotFoundHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		handler(&StdContext{Context: r.Context(), responseWriter: w, request: r})
+	})
+}
+
+func (app *App) SetNotAllowedHandler(handler HandlerFuncWithContext) {
+	app.router.MethodNotAllowedHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		handler(&StdContext{Context: r.Context(), responseWriter: w, request: r})
+	})
 }
