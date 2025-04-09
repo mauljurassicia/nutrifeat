@@ -1,0 +1,139 @@
+package components
+
+import (
+	"fmt"
+	"github/mauljurassicia/nutrifeat/model"
+	"github.com/axzilla/templui/icons"
+)
+
+type TableProps struct {
+	Header      model.TableHeader
+	Rows        model.TableRows
+	CurrentPage int
+	TotalPages  int
+	PageSize    int
+	TotalItems  int
+	SortColumn  string
+	SortOrder   string // "asc" or "desc"
+	OnPageChange string // HTMX trigger path
+	OnSort       string // HTMX trigger path
+}
+
+// AdvancedTable renders a table with pagination, sorting, and empty state handling
+templ AdvancedTable(props TableProps) {
+	<div class="w-full space-y-4">
+		<!-- Table -->
+		<div class="w-full overflow-x-auto rounded-lg border border-accent-foreground">
+			<table class="w-full text-sm text-left">
+				<thead class="text-xs uppercase bg-secondary text-secondary-foreground">
+					<tr>
+						for _, col := range props.Header {
+							<th 
+								scope="col" 
+								class="px-6 py-3 cursor-pointer hover:bg-secondary-foreground/10"
+								if props.OnSort != "" {
+									hx-get={ fmt.Sprintf("%s?sort=%s&order=%s", props.OnSort, col, getSortOrder(col, props.SortColumn, props.SortOrder)) }
+									hx-trigger="click"
+									hx-target="closest div"
+									hx-swap="outerHTML"
+								}
+							>
+								<div class="flex items-center justify-between">
+									<span>{ col }</span>
+									if col == props.SortColumn {
+										if props.SortOrder == "asc" {
+											<span>@icons.ChevronUp(icons.IconProps{Class: "h-4 w-4"})</span>
+										} else {
+											<span>@icons.ChevronDown(icons.IconProps{Class: "h-4 w-4"})</span>
+										}
+									}
+								</div>
+							</th>
+						}
+					</tr>
+				</thead>
+				<tbody>
+					for i, row := range props.Rows {
+						<tr class={ "border-b border-accent-foreground", templ.KV("bg-secondary/5", i % 2 == 0) }>
+							for _, col := range props.Header {
+								<td class="px-6 py-4 whitespace-nowrap">
+									if val, ok := row[col]; ok {
+										if str, ok := val.(string); ok {
+											{ str }
+										} else {
+											// Fallback for non-string values
+											{ fmt.Sprintf("%v", val) }
+										}
+									}
+								</td>
+							}
+						</tr>
+					}
+					if len(props.Rows) == 0 {
+						<tr>
+							<td colspan={ fmt.Sprint(len(props.Header)) } class="px-6 py-4 text-center text-muted-foreground">
+								<div class="flex flex-col items-center justify-center py-6">
+									@icons.FileX(icons.IconProps{Class: "h-12 w-12 text-muted-foreground/50 mb-2"})
+									<p>No data available</p>
+								</div>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+
+		<!-- Pagination -->
+		if props.TotalPages > 1 {
+			<div class="flex items-center justify-between">
+				<div class="text-sm text-muted-foreground">
+					Showing <span class="font-medium">{ fmt.Sprintf("%d", (props.CurrentPage-1)*props.PageSize+1) }</span> to <span class="font-medium">{ fmt.Sprintf("%d", min((props.CurrentPage)*props.PageSize, props.TotalItems)) }</span> of <span class="font-medium">{ fmt.Sprintf("%d", props.TotalItems) }</span> results
+				</div>
+				<div class="flex space-x-2">
+					<button 
+						class="px-3 py-1 rounded border border-accent-foreground flex items-center gap-1 disabled:opacity-50 disabled:cursor-not-allowed"
+						disabled?={ props.CurrentPage <= 1 }
+						if props.OnPageChange != "" && props.CurrentPage > 1 {
+							hx-get={ fmt.Sprintf("%s?page=%d", props.OnPageChange, props.CurrentPage-1) }
+							hx-target="closest div.w-full.space-y-4"
+							hx-swap="outerHTML"
+						}
+					>
+						@icons.ChevronLeft(icons.IconProps{Class: "h-4 w-4"})
+						Previous
+					</button>
+					<button 
+						class="px-3 py-1 rounded border border-accent-foreground flex items-center gap-1 disabled:opacity-50 disabled:cursor-not-allowed"
+						disabled?={ props.CurrentPage >= props.TotalPages }
+						if props.OnPageChange != "" && props.CurrentPage < props.TotalPages {
+							hx-get={ fmt.Sprintf("%s?page=%d", props.OnPageChange, props.CurrentPage+1) }
+							hx-target="closest div.w-full.space-y-4"
+							hx-swap="outerHTML"
+						}
+					>
+						Next
+						@icons.ChevronRight(icons.IconProps{Class: "h-4 w-4"})
+					</button>
+				</div>
+			</div>
+		}
+	</div>
+}
+
+// Helper functions
+func getSortOrder(column, currentSortColumn, currentSortOrder string) string {
+	if column != currentSortColumn {
+		return "asc"
+	}
+	if currentSortOrder == "asc" {
+		return "desc"
+	}
+	return "asc"
+}
+
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}

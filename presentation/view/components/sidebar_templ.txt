@@ -1,4 +1,4 @@
-<aside class=\"w-64 h-[calc(100vh-5rem)] border-r border-r-secondary px-4 py-6 overflow-y-auto\" aria-label=\"Sidebar\"><nav class=\"space-y-6\" hx-boost=\"true\" hx-target=\"body\">
+<aside class=\"w-64 h-[calc(100vh-5rem)] border-r border-r-accent-foreground px-4 py-6 overflow-y-auto\" aria-label=\"Sidebar\"><nav class=\"space-y-6\" hx-boost=\"true\" hx-target=\"body\">
 <a href=\"/dashboard\" preload=\"mouseover\" class=\"
 \">
 Dashboard </a> 

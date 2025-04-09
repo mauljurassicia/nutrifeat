@@ -40,7 +40,7 @@ func Sidebar() templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		path := ctx.Value("path").(string)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<aside class=\"w-64 h-[calc(100vh-5rem)] border-r border-r-secondary px-4 py-6 overflow-y-auto\" aria-label=\"Sidebar\"><nav class=\"space-y-6\" hx-boost=\"true\" hx-target=\"body\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<aside class=\"w-64 h-[calc(100vh-5rem)] border-r border-r-accent-foreground px-4 py-6 overflow-y-auto\" aria-label=\"Sidebar\"><nav class=\"space-y-6\" hx-boost=\"true\" hx-target=\"body\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

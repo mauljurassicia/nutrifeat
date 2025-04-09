@@ -1,0 +1,50 @@
+package components
+
+import "github/mauljurassicia/nutrifeat/model"
+
+// AdvancedTableExample demonstrates how to use the AdvancedTable component
+templ AdvancedTableExample() {
+    @AdvancedTable(TableProps{
+        Header: []string{"Name", "Age", "Role", "Status"},
+        Rows: []model.TableData{
+            {
+                "Name": "John Doe",
+                "Age": "32",
+                "Role": "Nutritionist",
+                "Status": "Active",
+            },
+            {
+                "Name": "Jane Smith",
+                "Age": "28",
+                "Role": "Patient",
+                "Status": "Inactive",
+            },
+            {
+                "Name": "Bob Johnson",
+                "Age": "45",
+                "Role": "Doctor",
+                "Status": "Active",
+            },
+            {
+                "Name": "Alice Williams",
+                "Age": "35",
+                "Role": "Nurse",
+                "Status": "Active",
+            },
+            {
+                "Name": "Charlie Brown",
+                "Age": "52",
+                "Role": "Patient",
+                "Status": "Active",
+            },
+        },
+        CurrentPage: 1,
+        TotalPages: 2,
+        PageSize: 5,
+        TotalItems: 10,
+        SortColumn: "Name",
+        SortOrder: "asc",
+        OnPageChange: "/api/table-data",
+        OnSort: "/api/table-data",
+    })
+}

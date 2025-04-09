@@ -1,0 +1,30 @@
+package components
+
+import "github/mauljurassicia/nutrifeat/model"
+
+// TableExample demonstrates how to use the SimpleTable component
+templ TableExample() {
+    @SimpleTable(
+        []string{"Name", "Age", "Role", "Status"},
+        []model.TableData{
+            {
+                "Name": "John Doe",
+                "Age": "32",
+                "Role": "Nutritionist",
+                "Status": "Active",
+            },
+            {
+                "Name": "Jane Smith",
+                "Age": "28",
+                "Role": "Patient",
+                "Status": "Inactive",
+            },
+            {
+                "Name": "Bob Johnson",
+                "Age": "45",
+                "Role": "Doctor",
+                "Status": "Active",
+            },
+        },
+    )
+}

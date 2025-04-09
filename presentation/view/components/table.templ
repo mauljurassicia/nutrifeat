@@ -1,10 +1,51 @@
-package components 
+package components
 
-import "github/mauljurassicia/nutrifeat/model"
+import (
+	"fmt"
+	
+	"github/mauljurassicia/nutrifeat/model"
+)
 
-
-
-
+// SimpleTable renders a responsive table with headers and rows
+// header: slice of column names
+// rows: slice of maps where each map represents a row with key-value pairs
 templ SimpleTable(header model.TableHeader, rows model.TableRows) {
-    
+	<div class="w-full overflow-x-auto rounded-lg">
+		<table class="w-full text-sm text-left">
+			<thead class="text-xs uppercase bg-secondary text-secondary-foreground">
+				<tr>
+					for _, col := range header {
+						<th scope="col" class="px-6 py-3">
+							{ col }
+						</th>
+					}
+				</tr>
+			</thead>
+			<tbody>
+				for i, row := range rows {
+					<tr class={ "border-b border-accent-foreground", templ.KV("bg-secondary/5", i % 2 == 0) }>
+						for _, col := range header {
+							<td class="px-6 py-4 whitespace-nowrap">
+								if val, ok := row[col]; ok {
+									if str, ok := val.(string); ok {
+										{ str }
+									} else {
+										// Fallback for non-string values
+										{ fmt.Sprintf("%v", val) }
+									}
+								}
+							</td>
+						}
+					</tr>
+				}
+				if len(rows) == 0 {
+					<tr>
+						<td colspan={ fmt.Sprint(len(header)) } class="px-6 py-4 text-center text-muted-foreground">
+							No data available
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
 }

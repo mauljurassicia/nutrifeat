@@ -1,0 +1,37 @@
+<div class=\"w-full space-y-4\"><!-- Table --><div class=\"w-full overflow-x-auto rounded-lg border border-accent-foreground\"><table class=\"w-full text-sm text-left\"><thead class=\"text-xs uppercase bg-secondary text-secondary-foreground\"><tr>
+<th scope=\"col\" class=\"px-6 py-3 cursor-pointer hover:bg-secondary-foreground/10\"
+ hx-get=\"
+\" hx-trigger=\"click\" hx-target=\"closest div\" hx-swap=\"outerHTML\"
+><div class=\"flex items-center justify-between\"><span>
+</span> 
+<span>
+</span>
+<span>
+</span>
+</div></th>
+</tr></thead> <tbody>
+<tr class=\"
+\">
+<td class=\"px-6 py-4 whitespace-nowrap\">
+ 
+</td>
+</tr>
+<tr><td colspan=\"
+\" class=\"px-6 py-4 text-center text-muted-foreground\"><div class=\"flex flex-col items-center justify-center py-6\">
+<p>No data available</p></div></td></tr>
+</tbody></table></div><!-- Pagination -->
+<div class=\"flex items-center justify-between\"><div class=\"text-sm text-muted-foreground\">Showing <span class=\"font-medium\">
+</span> to <span class=\"font-medium\">
+</span> of <span class=\"font-medium\">
+</span> results</div><div class=\"flex space-x-2\"><button class=\"px-3 py-1 rounded border border-accent-foreground flex items-center gap-1 disabled:opacity-50 disabled:cursor-not-allowed\"
+ disabled
+ hx-get=\"
+\" hx-target=\"closest div.w-full.space-y-4\" hx-swap=\"outerHTML\"
+>
+Previous</button> <button class=\"px-3 py-1 rounded border border-accent-foreground flex items-center gap-1 disabled:opacity-50 disabled:cursor-not-allowed\"
+ disabled
+ hx-get=\"
+\" hx-target=\"closest div.w-full.space-y-4\" hx-swap=\"outerHTML\"
+>Next
+</button></div></div>
+</div>

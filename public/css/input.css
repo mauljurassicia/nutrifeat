@@ -33,50 +33,52 @@
 }
 
 
-:root  {
-  --background: hsl(126, 90%, 95%);
-  --foreground: hsl(126, 5%, 10%);
-  --card: hsl(126, 50%, 90%);
-  --card-foreground: hsl(126, 5%, 11%);
-  --popover: hsl(126, 90%, 95%);
-  --popover-foreground: hsl(126, 95%, 10%);
-  --primary: hsl(126, 44%, 55%);
+:root {
+  --background: hsl(131, 77%, 95%);
+  --foreground: hsl(131, 5%, 10%);
+  --card: hsl(131, 50%, 90%);
+  --card-foreground: hsl(131, 5%, 15%);
+  --popover: hsl(131, 77%, 95%);
+  --popover-foreground: hsl(131, 95%, 10%);
+  --primary: hsl(131, 67%, 36%);
   --primary-foreground: hsl(0, 0%, 100%);
-  --secondary: hsl(126, 30%, 70%);
+  --secondary: hsl(131, 30%, 80%);
   --secondary-foreground: hsl(0, 0%, 0%);
-  --muted: hsl(88, 30%, 85%);
-  --muted-foreground: hsl(126, 5%, 35%);
-  --accent: hsl(88, 30%, 80%);
-  --accent-foreground: hsl(126, 5%, 11%);
-  --destructive: hsl(0, 90%, 30%);
-  --destructive-foreground: hsl(126, 5%, 90%);
-  --border: hsl(126, 30%, 50%);
-  --input: hsl(126, 30%, 18%);
-  --ring: hsl(126, 44%, 55%);
+  --muted: hsl(93, 30%, 85%);
+  --muted-foreground: hsl(131, 5%, 40%);
+  --accent: hsl(93, 30%, 80%);
+  --accent-foreground: hsl(131, 5%, 15%);
+  --destructive: hsl(0, 77%, 50%);
+  --destructive-foreground: hsl(131, 5%, 90%);
+  --border: hsl(131, 30%, 80%);
+  --input: hsl(131, 30%, 50%);
+  --ring: hsl(131, 67%, 36%);
   --radius: 0.75rem;
 }
-.dark  {
-  --background: hsl(126, 50%, 10%);
-  --foreground: hsl(126, 5%, 90%);
-  --card: hsl(126, 50%, 10%);
-  --card-foreground: hsl(126, 5%, 90%);
-  --popover: hsl(126, 50%, 5%);
-  --popover-foreground: hsl(126, 5%, 90%);
-  --primary: hsl(126, 44%, 55%);
+
+.dark {
+  --background: hsl(131, 50%, 10%);
+  --foreground: hsl(131, 5%, 90%);
+  --card: hsl(131, 50%, 10%);
+  --card-foreground: hsl(131, 5%, 90%);
+  --popover: hsl(131, 50%, 5%);
+  --popover-foreground: hsl(131, 5%, 90%);
+  --primary: hsl(131, 67%, 36%);
   --primary-foreground: hsl(0, 0%, 100%);
-  --secondary: hsl(126, 30%, 11%);
+  --secondary: hsl(131, 30%, 20%);
   --secondary-foreground: hsl(0, 0%, 100%);
-  --muted: hsl(88, 30%, 15%);
-  --muted-foreground: hsl(126, 5%, 60%);
-  --accent: hsl(88, 30%, 15%);
-  --accent-foreground: hsl(126, 5%, 90%);
-  --destructive: hsl(0, 90%, 30%);
-  --destructive-foreground: hsl(126, 5%, 90%);
-  --border: hsl(126, 30%, 18%);
-  --input: hsl(126, 30%, 18%);
-  --ring: hsl(126, 44%, 55%);
+  --muted: hsl(93, 30%, 25%);
+  --muted-foreground: hsl(131, 5%, 65%);
+  --accent: hsl(93, 30%, 25%);
+  --accent-foreground: hsl(131, 5%, 90%);
+  --destructive: hsl(0, 77%, 50%);
+  --destructive-foreground: hsl(131, 5%, 90%);
+  --border: hsl(131, 30%, 50%);
+  --input: hsl(131, 30%, 50%);
+  --ring: hsl(131, 67%, 36%);
   --radius: 0.75rem;
 }
+
 
 
 
@@ -92,11 +94,11 @@
 }
 
 .sidebar-item {
-  @apply flex items-center gap-3 p-3 rounded-md hover:bg-accent cursor-pointer text-accent-foreground;
+  @apply flex items-center gap-3 p-3 rounded-md hover:bg-secondary cursor-pointer text-accent-foreground;
 }
 
 .sidebar-item.active {
-  @apply bg-accent text-accent-foreground;
+  @apply bg-secondary text-accent-foreground;
 }
 
 /* Hide scrollbars for all elements in all modern browsers */
